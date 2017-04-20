@@ -1,0 +1,21 @@
+{
+  "name": "expressscaffold",
+  "description": "",
+  "main": "",
+  "authors": [
+    "abraxasrex <jbreasor@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/abraxasrex/expressScaffold",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}

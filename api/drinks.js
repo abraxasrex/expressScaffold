@@ -19,4 +19,11 @@ router.get('/drinks/:name', (req, res)=>{
   res.send(drink);
 });
 
+router.post('/drinks', (req, res)=>{
+  var newDrink = req.body;
+  drinks.push(newDrink);
+  // we could send back the entire array as verification
+  res.sendStatus(201);
+});
+
 module.exports = router;

@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="expressForm">
   <head>
     <title>Express app</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1>Hello World</h1>
-    <p>hello .... world.</p>
+  <body ng-controller="formController as vm">
+    <h3>Hello {{vm.message}} </h3>
+    <div >
+      <form >
+        <input ng-model="vm.form.name" />
+        <input ng-model="vm.form.flavor" />
+        <button type="submit" ng-click="vm.saveForm()">submit my drink</button>
+      </form>
+    </div>
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
