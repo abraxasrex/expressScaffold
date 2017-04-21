@@ -1,0 +1,21 @@
+
+<div>
+    <h3> drink menu </h3>
+    <div ng-repeat="drink in vm.drinks">
+        <p> name: {{drink.name}} </p>
+        <button><a ui-sref="update({drink: drink})">edit</a></button>
+        <button ng-click="vm.deleteDrink(drink)"> delete </button>
+        <hr />
+    </div>
+
+    <h3> new drink </h3>
+    <form>
+        <label> name </label>
+        <input ng-model="vm.form.name" />
+        <br />
+        <label> main ingredient </label>
+        <input ng-model="vm.form.ingredient" />
+        <br />
+        <button type="submit" ng-click="vm.postDrink()"> post new drink </button>
+    </form>
+</div>

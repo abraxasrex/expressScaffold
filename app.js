@@ -5,6 +5,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// import mongoose
+var mongoose = require('mongoose');
+
+var Drink = require('./models/Drink');
+
+mongoose.connect("mongodb://jonathan:reasor@ds111851.mlab.com:11851/barstucks")
+.then(()=>{
+    console.log('success');
+
+    Drink.create({
+      name: 'unicorn frappe',
+      mainIngredient: 'sour sugar stuff'
+    }).then(()=>{
+      console.log('posted frap');
+    }).catch((e)=> {console.log(e); });
+
+}).catch((e)=> { console.log(e); });
 
 //import statements for our routes
 var index = require('./routes/index');
@@ -40,7 +57,8 @@ app.use('/api/', drinks);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
-  err.status = 404;
+  //err.status  
+  err["status"] = 404;
   next(err);
 });
 

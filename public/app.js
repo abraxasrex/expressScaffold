@@ -1,21 +1,24 @@
-var expressForm;
-(function (expressForm) {
-    var app = angular.module('expressForm', []);
-    // applesauce
-    var formController = (function () {
-        function formController($http) {
-            this.$http = $http;
-            this.message = "World";
-        }
-        formController.prototype.saveForm = function () {
-            console.log('save');
-            this.$http.post('/api/drinks', this.form).then(function (result) {
-                console.log('ok');
-            }).catch(function (err) { console.log(err); });
-        };
-        return formController;
-    }());
-    expressForm.formController = formController;
-    app.controller('formController', formController);
-})(expressForm || (expressForm = {}));
+var Barstucks;
+(function (Barstucks) {
+    var module = angular.module('BarStucks', ['ui.router'])
+        .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+        $stateProvider.state('drinks', {
+            url: '/',
+            templateUrl: 'drinks.html',
+            controller: Barstucks.Controllers.DrinksController,
+            controllerAs: 'vm'
+        })
+            .state('update', {
+            url: '/update',
+            templateUrl: 'update.html',
+            controller: Barstucks.Controllers.UpdateController,
+            controllerAs: 'vm',
+            params: {
+                drink: null
+            }
+        });
+        $urlRouterProvider.otherwise('/');
+        $locationProvider.html5Mode(true);
+    });
+})(Barstucks || (Barstucks = {}));
 //# sourceMappingURL=app.js.map
